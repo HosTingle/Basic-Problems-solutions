@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+long long a[6900][6900];
+int main(){
+	long long c,d,e,f,say=0,q,w,p,t,i,z;
+	cin>>c>>d;
+	for(i=1;i<c+1;i++){
+		for(z=1;z<c+1;z++){
+			a[i][z]=0;
+		}
+	}
+	cin>>e>>f;
+	a[e][f]=0;
+	while(d--){
+	cin>>q>>w;
+	a[q][w]=1;
+	}
+	p=e;
+	t=f;
+	i=1;
+	while(e-1){
+	if(a[e-1][f]==1){
+	break;
+	}
+	e--;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(f-1!=0){
+	if(a[e][f-1]==1){
+	break;
+    }
+	f--;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(p-1!=0 && f-1!=0){
+	if(a[e-1][f-1]==1){
+	break;
+	}
+	e--;
+	f--;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(e+1!=c+1 && e+1!=c+1){
+	if(a[e+1][f+1]==1){
+	break;
+	}
+	e++;
+	f++;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(e+1!=c+1){
+	if(a[e+1][f]==1){
+	break;
+	}
+	e++;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(f+1!=c+1){
+	if(a[e][f+1]==1){
+	break;
+	}
+	f++;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(e-1!=0 && f+1!=c+1){
+	if(a[e-1][f+1]==1){
+	break;
+	}
+	e-=1;
+	f+=1;
+	say++;
+	}
+	e=p;
+	f=t;
+	while(e+1!=c+1 && f-1!=0){
+	if(a[e+1][f-1]==1){
+	break;
+	}
+	e+=1;
+	f-=1;
+	say++;
+	}
+	cout<<say<<endl;
+}
