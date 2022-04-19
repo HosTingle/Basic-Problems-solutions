@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+int main(){
+	int a,b,k,t,i,u,tru=1;
+	char *sa;
+	// Sıra ile dizi uzunluğu kelime ve döndürülme sayısı alınır.
+	scanf("%d",&u);
+	char d[u];
+	sa=d;
+	scanf("%s",d);
+	scanf("%d",&k);
+	if(k>26){
+		k=k%26;
+		// Alfabede 26 harf olduğu için 26'ya bölünür.
+	}
+	for(i=0;sa[i]!='\0';i++){
+		// for döngüsü ile dizi üzerinde gezilerek karaterler istenildiği kadar çevrilir.
+		if(isupper(sa[i])){
+		//Eğer karakter büyük ise koşula girer ve ardında karakterin artılmış halinin büyük olup olamdığı kontrol edilir.
+		if(isupper((*(sa+i)+k))){
+		printf("%c",*(sa+i)+k);
+		continue;
+		// Artırılmış hali büyük ise yazdırılır değil ise dizi ASCİ üzerinde döndürülüp yazılır.
+		}
+		else{
+		printf("%c",*(sa+i)+k+230);	
+		continue;
+		//continue ler sayesinde diğer iflere girmesi önlenir.
+	    }
+		}
+		if(isalpha(sa[i])){
+		if(isalpha(*(sa+i)+k)){
+		printf("%c",*(sa+i)+k);
+		//Eğer bir harf ise girer ve sonra harfin döndürülmüş halinin harf olup olmadığı kontrol edilir 
+		}
+		else
+		printf("%c",*(sa+i)+k+230);
+		// İf'e girmez ise burada ASCİ de döndürülüp öyle bastırılır
+	    }
+		else
+		printf("%c",*(sa+i));
+		// Eğer sayı bir harf değil ise buraya girer ve bastırılır.
+	}
+}
